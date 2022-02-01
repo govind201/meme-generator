@@ -22,8 +22,8 @@ function App() {
       template_id: selectedImage.id,
       text0: topText,
       text1: bottomText,
-      username: process.env.REACT_APP_USERNAME,
-      password: process.env.REACT_APP_PASSWORD,
+      username: 'bletsbelts',
+      password: 'password'
     }
     const queryParams = new URLSearchParams(params).toString();
     const response = await fetch(`https://api.imgflip.com/caption_image? ${queryParams}`)
