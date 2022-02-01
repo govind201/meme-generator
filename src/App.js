@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Header from './Header';
+import "./App.css";
 import { MemeImage } from './MemeImage';
+import { Share } from "./Share";
 
 function App() {
   const [apiImages, setapiImages] = useState([]);
@@ -13,7 +16,6 @@ function App() {
       .then(res =>  res.json())
       .then(res => setapiImages(res.data.memes))
       .catch(error => console.error(error));
-
   },[]) // only on mount
 
   const handleSelectedImageText = async (event) =>  {
@@ -31,16 +33,24 @@ function App() {
     setMeme(jsonResponse.data);
 
   }
+
   if(meme) {
     return (
-      <div>
-        <MemeImage image={meme}
+      <div className='App' >
+      <Header />
+        <MemeImage
+         image={meme}
+        />
+          <Share
+         url={meme.url}
+         shareText= "Check out this meme"
         />
       </div>
     )
   }
   return (
     <div className="App">
+      <Header />
       {selectedImage &&
       <form onSubmit={(event)=> handleSelectedImageText(event)}>
        <MemeImage 
@@ -57,12 +67,12 @@ function App() {
        value={bottomText}
        />
        <button type='submit'>
-          Create Meme
+          Generate
        </button>
       </form>
       }
       {!selectedImage && (
-        <div>
+        <>
           <h1>Pick an image</h1>
         {apiImages.map(apiImage=> {
         return (
@@ -74,7 +84,7 @@ function App() {
         )
          })
       }
-      </div>
+      </>
       )}
     </div>
   );

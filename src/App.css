@@ -1,0 +1,23 @@
+
+input{
+    width: 20%;
+    height: 40px;
+    margin-left: 5px;
+  }
+  
+  button {
+      margin-left: 5px;
+    border: none;
+    font-family: VT323, monospace;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    color: white;
+    background: chocolate;
+  }
+button:active {
+    background-color: #2d6e2f
+}
+
+  /* div{
+    background: red;
+  } */

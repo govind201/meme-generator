@@ -1,5 +1,6 @@
 .image{
     width: 30 px;
+    border: 2px solid black;
 }
 
 .App{

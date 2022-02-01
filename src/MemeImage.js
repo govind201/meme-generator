@@ -1,7 +1,7 @@
 import React from "react";
 import "./MemeImage.css";
 
-export const MemeImage = ({image, onClick  = null}) => {
+export const MemeImage = ({image = null, onClick  = null, selectedImage =  null}) => {
   return (
     <div className='meme-image'>
     <img
