@@ -26,7 +26,7 @@ function App() {
       password: process.env.REACT_APP_PASSWORD,
     }
     const queryParams = new URLSearchParams(params).toString();
-    const response = await fetch(`https://api.imgflip.com/caption_image? ${queryParams}`)
+    const response = await fetch(`https://api.imgflip.com/caption_image? ${queryParams}`).catch(error => console.error(error));
     const jsonResponse = await  response.json();
     setMeme(jsonResponse.data);
 
