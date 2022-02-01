@@ -7,6 +7,30 @@
     text-align: center;
 }
 .meme-image{
-    margin-bottom: 30px;
+    margin-top: 30px;
     text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meme-image .top {
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  margin: auto;
+  font-weight: bolder;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+  -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+  2px 2px 5px #000;
+}
+.meme-image .bottom {
+    position: absolute;
+  bottom: 10px;
+  text-align: center;
+  font-weight: bolder;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+  -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+  2px 2px 5px #000;
 }

@@ -1,16 +1,17 @@
 import React from "react";
 import "./MemeImage.css";
 
-export const MemeImage = ({image = null, onClick  = null, selectedImage =  null}) => {
+export const MemeImage = ({image, topText, bottomText}) => {
   return (
     <div className='meme-image'>
     <img
       key={image.id}
       src={image.url}
       alt={image.name}
-      onClick={onClick}
-      style={{maxWidth : '300px'}}
+      style={{height: '350px', minWidth: "400px"}}
     />
-      </div>
+          <h2 className="top">{topText.toUpperCase()}</h2>
+          <h2 className="bottom">{bottomText.toUpperCase()}</h2>
+   </div>
   )
 }

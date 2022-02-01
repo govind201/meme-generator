@@ -9,53 +9,41 @@ function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [meme, setMeme] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+
+  async function fetchImages() {
+    try{
+      setLoading(true);
+      let {data} = await (await fetch('https://api.imgflip.com/get_memes')).json();
+       await setapiImages(data.memes);
+        const image = data.memes[Math.floor(Math.random() * data.memes.length)]
+       await setSelectedImage(image);
+      setLoading(false);
+    }catch(ex) {
+      console.error(ex);
+    }
+  }
+  
+  function handleImageChange(event) {
+    event.preventDefault();
+    const image = apiImages[Math.floor(Math.random() * apiImages.length)]
+     setSelectedImage(image)
+     setTopText('')
+     setBottomText('')
+  }
+
 
   useEffect(()=>{
-      fetch('https://api.imgflip.com/get_memes')
-      .then(res =>  res.json())
-      .then(res => setapiImages(res.data.memes))
-      .catch(error => console.error(error));
+    fetchImages();
   },[]) // only on mount
 
-  const handleSelectedImageText = async (event) =>  {
-    event.preventDefault();
-    const params = {
-      template_id: selectedImage.id,
-      text0: topText,
-      text1: bottomText,
-      username: process.env.REACT_APP_USERNAME,
-      password: process.env.REACT_APP_PASSWORD,
-    }
-    const queryParams = new URLSearchParams(params).toString();
-    const response = await fetch(`https://api.imgflip.com/caption_image? ${queryParams}`).catch(error => console.error(error));
-    const jsonResponse = await  response.json();
-    setMeme(jsonResponse.data);
-
-  }
-
-  if(meme) {
-    return (
-      <div className='App' >
-      <Header />
-        <MemeImage
-         image={meme}
-        />
-          <Share
-         url={meme.url}
-         shareText= "Check out this meme"
-        />
-      </div>
-    )
-  }
   return (
     <div className="App">
       <Header />
-      {selectedImage &&
-      <form onSubmit={(event)=> handleSelectedImageText(event)}>
-       <MemeImage 
-          image = {selectedImage}
-       />
+      {!loading &&
+      <>
+      <form className='selectedImage-form'>
        <input
        placeholder='top-text'
        onChange={event => setTopText(event.target.value)}
@@ -66,26 +54,22 @@ function App() {
        onChange={event => setBottomText(event.target.value)}
        value={bottomText}
        />
-       <button type='submit'>
-          Generate
+       <button type='button' onClick={handleImageChange}>
+         Next Image
        </button>
       </form>
-      }
-      {!selectedImage && (
-        <>
-          <h1>Pick an image</h1>
-        {apiImages.map(apiImage=> {
-        return (
-          <MemeImage 
-              key={apiImage.id}
-              image = {apiImage}
-              onClick={()=>setSelectedImage(apiImage)}
-          />
-        )
-         })
-      }
+         <MemeImage 
+         topText={topText}
+         bottomText={bottomText}
+          image = {selectedImage}
+       />
+          <Share
+         url={selectedImage.url}
+         shareText= "Check out this selectedImage"
+        />
       </>
-      )}
+
+      }
     </div>
   );
 }

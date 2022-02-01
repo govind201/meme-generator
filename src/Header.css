@@ -7,6 +7,7 @@ header {
     max-width: 70rem; 
     margin-left: auto;
     margin-right: auto;
+  background-image: linear-gradient(to right, rgb(155, 37, 37), rgb(65, 137, 30));
   }
   
   header > img {
