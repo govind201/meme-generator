@@ -20,17 +20,17 @@
   top: 10px;
   text-align: center;
   margin: auto;
-  font-weight: bolder;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
   -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
   2px 2px 5px #000;
+  color: white;
 }
 .meme-image .bottom {
     position: absolute;
   bottom: 10px;
   text-align: center;
-  font-weight: bolder;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
   -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
   2px 2px 5px #000;
+  color: white;
 }
