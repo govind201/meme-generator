@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-ACCESS WEBSITE HERE: govind-react-meme.netlify.app/
+ACCESS WEBSITE HERE: https://govind-react-meme.netlify.app/
 
 This app is built using React and imgflip API to fetch images to create meme.
 
